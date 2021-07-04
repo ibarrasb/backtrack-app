@@ -4,8 +4,9 @@ import axios from 'axios'
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
     const [callback, setCallback] = useState(false)
-    const [name, setName] = useState([])
+    const [name, setName] = useState()
     const [username, setUsername] = useState([])
+    const [userID, setUserID] = useState()
     const [img, setImg] = useState()
     const [post, setPost] = useState([])
     const [followers, setFollowers] = useState([])
@@ -18,8 +19,9 @@ function UserAPI(token) {
                     const res = await axios.get('/user/infor', {
                         headers: {Authorization: token}
                     })
-                    setName(res.data.name.split(' ')[0])
+                    setName(res.data.name)
                     setUsername(res.data.username)
+                    setUserID(res.data._id)
                     setIsLogged(true)
                     setPost(res.data.post)
                     setFollowers(res.data.followers)
@@ -44,6 +46,7 @@ function UserAPI(token) {
         callback: [callback, setCallback],
         name: [name, setName],
         username: [username, setUsername],
+        id: [userID, setUserID],
         image: [img, setImg],
         posts: [post, setPost],
         follwers: [followers, setFollowers],

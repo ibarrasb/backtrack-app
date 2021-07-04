@@ -7,3 +7,15 @@ header{
     justify-content: space-around;
     align-items: center;
 }
+header a{
+    text-transform: uppercase;
+    color: #555;
+}
+header ul li{
+    display: inline-block;
+    opacity: 0.7;
+    padding: 0 20px;
+}
+header ul li:hover{
+    opacity: 1;
+}

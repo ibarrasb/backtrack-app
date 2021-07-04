@@ -10,7 +10,8 @@ function PostsAPI() {
     useEffect(() =>{
         const getPosts = async () => {
             const res = await axios.get('/api/posts')
-            setPosts(res.data.posts)
+            console.log("HERE: " + JSON.stringify(res.data))
+            setPosts(res.data)
            
         }
         getPosts()

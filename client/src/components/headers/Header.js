@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {GlobalState} from '../../GlobalState'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
+import './header.css'
 
 function Header() {
     const state = useContext(GlobalState)
