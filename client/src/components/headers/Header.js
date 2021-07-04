@@ -6,7 +6,6 @@ import axios from 'axios';
 function Header() {
     const state = useContext(GlobalState)
     const [isLogged] = state.UserAPI.isLogged
-    const [isAdmin] = state.UserAPI.isAdmin
 
 
     const logoutUser = async () => {
@@ -15,14 +14,6 @@ function Header() {
         window.location.href = "/"
     }
 
-    const adminRouter = () => {
-        return(
-            <div>
-            <li><Link to="/create_product">Create Product</Link></li>
-            <li><Link to="/category">Categories</Link></li>
-            </div>
-        )
-    }
     const loggedRouter = () => {
         return(
             <div>
@@ -36,14 +27,13 @@ function Header() {
 
         <div className='logo'>
             <h1>
-                    <Link to="/">{isAdmin ? 'Admin' : 'MERN JWT Template'}</Link>
+                    <Link to="/">backtrack</Link>
             </h1>
         </div>
 
         <ul>
-            <li><Link to="/">{isAdmin ? 'Admin' : 'Home'}</Link></li>
+            <li><Link to="/">Home</Link></li>
 
-            {isAdmin && adminRouter()}
             
             {
                 isLogged ? loggedRouter() :  <li><Link to="/login">Login</Link></li>

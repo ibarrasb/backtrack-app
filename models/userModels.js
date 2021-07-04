@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    email: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -18,6 +18,22 @@ const userSchema = new mongoose.Schema({
     role: {
         type: Number,
         default: 0
+    },
+    posts: {
+        type: Array,
+        default: []
+    },
+    images:{
+        type: Object,
+        required: false
+    },
+    following: {
+        type: Array,
+        default: []
+    },
+    followers: {
+        type: Array,
+        default: []
     }
 },{
     timestamps: true 

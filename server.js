@@ -11,10 +11,8 @@ app.use(cors())
 
 //Routes
 app.use('/user', require('./routes/userRoutes'))
+app.use('/api', require('./routes/postRoutes'))
 
-//Remember to install all dependencies 
-//create dotenv file and link your mongodb URL
-//connect to mongodb
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
     useCreateIndex: true,
