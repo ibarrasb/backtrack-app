@@ -6,6 +6,7 @@ function UserAPI(token) {
     const [isAdmin, setIsAdmin] = useState(false)
     const [callback, setCallback] = useState(false)
     const [name, setName] = useState([])
+    const [username, setUsername] = useState([])
 
     useEffect(() =>{
         if(token){
@@ -15,6 +16,7 @@ function UserAPI(token) {
                         headers: {Authorization: token}
                     })
                     setName(res.data.name.split(' ')[0])
+                    setUsername(res.data.username)
                     setIsLogged(true)
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                     console.log(res.data)
@@ -35,7 +37,8 @@ function UserAPI(token) {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         callback: [callback, setCallback],
-        name: [name, setName]
+        name: [name, setName],
+        username: [username, setUsername]
     }
 }
 
