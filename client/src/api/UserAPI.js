@@ -3,10 +3,13 @@ import axios from 'axios'
 
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
     const [callback, setCallback] = useState(false)
     const [name, setName] = useState([])
     const [username, setUsername] = useState([])
+    const [img, setImg] = useState()
+    const [post, setPost] = useState([])
+    const [followers, setFollowers] = useState([])
+    const [following, setFollowing] = useState([])
 
     useEffect(() =>{
         if(token){
@@ -18,7 +21,10 @@ function UserAPI(token) {
                     setName(res.data.name.split(' ')[0])
                     setUsername(res.data.username)
                     setIsLogged(true)
-                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
+                    setPost(res.data.post)
+                    setFollowers(res.data.followers)
+                    setFollowing(res.data.following)
+                    setImg(res.data.img)
                     console.log(res.data)
                     
                 } catch (err) {
@@ -35,10 +41,13 @@ function UserAPI(token) {
 
     return {
         isLogged: [isLogged, setIsLogged],
-        isAdmin: [isAdmin, setIsAdmin],
         callback: [callback, setCallback],
         name: [name, setName],
-        username: [username, setUsername]
+        username: [username, setUsername],
+        image: [img, setImg],
+        posts: [post, setPost],
+        follwers: [followers, setFollowers],
+        following: [following, setFollowing]
     }
 }
 

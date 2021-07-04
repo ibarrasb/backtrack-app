@@ -1,4 +1,5 @@
 const Posts = require('../models/postModels');
+const User = require('../models/userModels');
 
 //user controller for authentication
 const postsCtrl = {
@@ -14,13 +15,14 @@ getPosts: async(req, res) =>{
 },
 createPost: async(req,res) => {
         try{
-            const{post_id, user, post, images} = req.body;
+            const{username, post, images} = req.body;
 
-            const pst = await Posts.findOne({post_id})
-            if(pst) return res.status(400).json({msg: 'You already made this post'})
+            const acc = await User.findOne({username})
+            if(acc) return res.status(200).json({msg: 'You made a post'})
+            if(!acc) return res.status(404).json({"msg": 'User does not exist'})
 
             const newPost = new Posts({
-                post_id, user, post, images
+                username, post, images
             })
             //Save Post to MongoDB
             await newPost.save()

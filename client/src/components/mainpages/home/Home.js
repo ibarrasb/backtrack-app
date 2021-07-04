@@ -6,7 +6,7 @@ function Home() {
     const [isLogged] = state.UserAPI.isLogged
     const [name] = state.UserAPI.name
     const [username] = state.UserAPI.username
-    console.log(name)
+ 
    
 
     return (
